@@ -1,12 +1,19 @@
 import random
+
 class Checker():
   def __init__(self, attempt, solution):
     self.attempt = list(attempt)
     self.solution = list(solution)
     print(f'SOLUTION: {solution}')
   
-  def check_correct_letters(self):
+  def check_correct_letters(self) -> list:
+      """ Search from the input solution the letters that appear in the final answer, and are placed correctly. 
 
+      Returns:
+          list: generates a preliminary map of the results of the input attempt:
+                1 - Corresponds to a correct letter, placed in the right place
+                '-' - Corresponds to a letter that either is part of the solution, or it is wrong
+      """
     output = []
     solution = self.solution.copy()
     attempt = self.attempt.copy()
@@ -23,13 +30,16 @@ class Checker():
 
     return output
 
+  def check_missplaced_letters(self) -> list:
+      """Search for the letters that are present in the final answer, but are missplaced.
 
-    
+      Returns:
+          list: generates a final map of the results of the input attempt
+                2 - Corresponds to a letter that is present in the final answer, but it's missplaced. 
+                1 - Corresponds to a correct letter, placed in the right place
+                0 - Corresponds to a wrong letter
+      """
 
-  def check_missplaced_letters(self):
-    """
-      Comprueba si las letras que componen la solución otorgada están en la solución final. 
-    """
     output = self.position_map.copy()
     solution = self.solution.copy()
 
@@ -92,7 +102,6 @@ class Wordle():
     life = 1
     win = False
     while life < 7:
-      #No se si realmente se implementa de esta manera      Inputer.get_word()
       inputer = Inputer(self.word_list)
       word = inputer.get_word()
       checker = Checker(word, solution)
