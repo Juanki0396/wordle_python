@@ -1,0 +1,2 @@
+# Write files you don't want git to track
+*__init__.py
