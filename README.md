@@ -30,4 +30,4 @@ Once you clone the repository, you can run the program by launching the command 
 We are 2 physics students who want to improve our programming skills. In our degree, computer science skills are not promoted so we are doing by our own. If you want to contact us don't doubt to use our linkedin:
 
 * [Juanki0396](www.linkedin.com/in/juancarlosaranda)
-* [Alvanovi]()
+* [Alvanovi](https://www.linkedin.com/in/%C3%A1lvaro-novillo-correas-1b4452226)
