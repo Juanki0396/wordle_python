@@ -1,0 +1,18 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "wordle_python"
+authors = [
+   {name = "Juan Carlos Aranda Huecas", email = "juanki0396@gmail.com"},
+   {name = "Alvaro Novillo Correas", email = "alvanovi@ucm.es"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+keywords = ["wordle", "python"]
+dynamic = ["version", "description"]
+
+[project.urls]
+Home = "https://github.com/Juanki0396/wordle_python"
