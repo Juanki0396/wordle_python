@@ -29,6 +29,10 @@ filelock==3.7.1
     #   tox
     #   virtualenv
 flake8==5.0.3
+    # via
+    #   -r dev-requirements.in
+    #   flake8-docstrings
+flake8-docstrings==1.6.0
     # via -r dev-requirements.in
 flit==3.7.1
     # via -r dev-requirements.in
@@ -79,6 +83,8 @@ py==1.11.0
     #   tox
 pycodestyle==2.9.0
     # via flake8
+pydocstyle==6.1.1
+    # via flake8-docstrings
 pyflakes==2.5.0
     # via flake8
 pyparsing==3.0.9
@@ -91,6 +97,8 @@ requests==2.28.1
     # via flit
 six==1.16.0
     # via tox
+snowballstemmer==2.2.0
+    # via pydocstyle
 toml==0.10.2
     # via
     #   pre-commit
