@@ -16,3 +16,6 @@ dynamic = ["version", "description"]
 
 [project.urls]
 Home = "https://github.com/Juanki0396/wordle_python"
+
+[tool.isort]
+profile = "black"
