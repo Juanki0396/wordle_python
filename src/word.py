@@ -33,6 +33,13 @@ class Letter(dataclasses.dataclass):
     def __eq__(self, letter: Letter) -> bool:
         return self.letter == letter.letter
 
+    def __ne__(self, letter: Letter) -> bool:
+        return self.letter != letter.letter
+
+    def set_new_state(self, state: LetterState) -> None:
+        """Set new state for the letter."""
+        self.state = state
+
 
 class Word(dataclasses.dataclass):
     """Represent a Wordle word."""
@@ -59,4 +66,10 @@ class Word(dataclasses.dataclass):
         """Return an list with comparison for each letter."""
         return [
             letter_a == letter_b for letter_a, letter_b in zip(self.word, word.word)
+        ]
+
+    def __ne__(self, word: Word) -> list[bool]:
+        """Return an list with opposite comparison for each letter."""
+        return [
+            letter_a != letter_b for letter_a, letter_b in zip(self.word, word.word)
         ]
