@@ -39,6 +39,12 @@ class Word(dataclasses.dataclass):
 
     word: list[Letter]
 
+    @classmethod
+    def from_str(cls, word: str) -> Word:
+        """Creates a Word from a string"""
+        word = [Letter(letter) for letter in word]
+        return cls(word)
+
     def __post_init__(self) -> None:
         if len(self) != 5:
             raise WordLenghtError("Word should contain five letters.")
