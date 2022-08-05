@@ -20,7 +20,8 @@ class WordLenghtError(Exception):
     """Raised when word length is no 5."""
 
 
-class Letter(dataclasses.dataclass):
+@dataclasses.dataclass
+class Letter:
     """Represent a wordle letter."""
 
     letter: str
@@ -41,7 +42,8 @@ class Letter(dataclasses.dataclass):
         self.state = state
 
 
-class Word(dataclasses.dataclass):
+@dataclasses.dataclass
+class Word:
     """Represent a Wordle word."""
 
     word: list[Letter]
@@ -51,6 +53,11 @@ class Word(dataclasses.dataclass):
         """Creates a Word from a string"""
         word = [Letter(letter) for letter in word]
         return cls(word)
+
+    @property
+    def is_correct(self) -> bool:
+        """Returns True if all letters are correct."""
+        return all([letter.state == LetterState.CORRECT for letter in self.word])
 
     def __post_init__(self) -> None:
         if len(self) != 5:
@@ -73,3 +80,6 @@ class Word(dataclasses.dataclass):
         return [
             letter_a != letter_b for letter_a, letter_b in zip(self.word, word.word)
         ]
+
+    def __str__(self) -> str:
+        return "".join([letter.letter for letter in self.word])
