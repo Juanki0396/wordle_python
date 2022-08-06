@@ -2,9 +2,7 @@
 
 import pathlib
 
-import checker
-import validator
-import word
+from . import checker, validator, word
 
 
 class Wordle:

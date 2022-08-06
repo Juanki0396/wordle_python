@@ -3,7 +3,7 @@
 import pathlib
 import random
 
-import word
+from . import word
 
 
 class NotAllowedWord(Exception):
