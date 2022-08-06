@@ -49,9 +49,9 @@ class Word:
     word: list[Letter]
 
     @classmethod
-    def from_str(cls, word: str) -> Word:
+    def from_str(cls, word_str: str) -> Word:
         """Creates a Word from a string"""
-        word = [Letter(letter) for letter in word]
+        word = [Letter(letter) for letter in word_str]
         return cls(word)
 
     @property
