@@ -23,7 +23,6 @@ def check_word_is_valid(word: word.Word, word_file: pathlib.Path) -> None:
     for example in lines:
         if example.strip().lower() == check_word.strip().lower():
             return
-        print(f"{check_word} ! = {example}")
     raise NotAllowedWord(word, f"Word {word} is not in our dictionary.")
 
 
