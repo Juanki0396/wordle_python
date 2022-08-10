@@ -1,7 +1,7 @@
 """Contains the logic to check wether a word is correct or not."""
 import itertools
 
-import word
+from . import word
 
 
 def check_correct_letters(solution: word.Word, attempt: word.Word) -> word.Word:

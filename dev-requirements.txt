@@ -4,6 +4,8 @@
 #
 #    pip-compile dev-requirements.in
 #
+-e file:///home/quito/code/wordle_python
+    # via -r dev-requirements.in
 attrs==22.1.0
     # via pytest
 black==22.6.0

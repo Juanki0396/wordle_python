@@ -3,7 +3,7 @@
 import pathlib
 import random
 
-import word
+from . import word
 
 
 class NotAllowedWord(Exception):
@@ -18,23 +18,25 @@ class NotAllowedWord(Exception):
 def check_word_is_valid(word: word.Word, word_file: pathlib.Path) -> None:
     """Check if a word is in the word list."""
     with open(word_file, "r") as file:
-        if str(word) not in file.readlines():
-            raise NotAllowedWord(word, "Word is not in our dictionary.")
+        lines = file.readlines()
+    check_word = str(word)
+    for example in lines:
+        if example.strip().lower() == check_word.strip().lower():
+            return
+    raise NotAllowedWord(word, f"Word {word} is not in our dictionary.")
 
 
-def get_word_from_user(word_file: pathlib.Path) -> word.Word:
+def get_word_from_user(word_file: pathlib.Path) -> word.Word | None:
     """Ask the user for a word. If len is invalid returns None"""
-    ask_user = True
-    while ask_user:
-        try:
-            user_word = input("Insert a 5 letter word: ")
-            user_word = word.Word.from_str(user_word)
-            check_word_is_valid(user_word, word_file)
-            ask_user = False
-        except word.WordLenghtError:
-            print("Please enter a word with 5 letter.")
-        except NotAllowedWord:
-            print("Word is not in our dictionary")
+    try:
+        user_word = word.Word.from_str(input("Insert a 5 letter word: "))
+        check_word_is_valid(user_word, word_file)
+    except word.WordLenghtError:
+        print("Please enter a word with 5 letter.")
+        user_word = None
+    except NotAllowedWord:
+        print("Word is not in our dictionary")
+        user_word = None
 
     return user_word
 
