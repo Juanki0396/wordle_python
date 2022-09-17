@@ -43,7 +43,7 @@ clean_venv: # Clean the venv folder
 
 compile_dev_dependencies: # Compiling dev requeriments file
 	@echo "Compiling developing dependencies"
-	$(VENV_ACTIVATE) && pip-compile -o $(PACKAGE_DEPENDENCIES) --extra dev pyproject.toml
+	$(VENV_ACTIVATE) && pip-compile -o $(PACKAGE_DEPENDENCIES) --extra dev --extra test pyproject.toml
 
 install: # Install the package
 	@echo "Installing the package: $(PROJECT_NAME)"
