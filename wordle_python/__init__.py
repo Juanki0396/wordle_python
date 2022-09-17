@@ -2,4 +2,4 @@
 
 __version__ = "0.1.0"
 
-from . import checker, validator, word, wordle  # noqa: F401
+from . import checker, validator  # noqa: F401

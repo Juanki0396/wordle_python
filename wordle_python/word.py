@@ -31,10 +31,10 @@ class Letter:
         if len(self.letter) != 1:
             raise LetterLengthError("Letter can only have len == 1")
 
-    def __eq__(self, letter: Letter) -> bool:
+    def __eq__(self, letter: Letter) -> bool:  # type: ignore[override]
         return self.letter == letter.letter
 
-    def __ne__(self, letter: Letter) -> bool:
+    def __ne__(self, letter: Letter) -> bool:  # type: ignore[override]
         return self.letter != letter.letter
 
     def set_new_state(self, state: LetterState) -> None:
@@ -69,13 +69,13 @@ class Word:
     def __getitem__(self, index: int) -> Letter:
         return self.word[index]
 
-    def __eq__(self, word: Word) -> list[bool]:
+    def __eq__(self, word: Word) -> list[bool]:  # type: ignore[override]
         """Return an list with comparison for each letter."""
         return [
             letter_a == letter_b for letter_a, letter_b in zip(self.word, word.word)
         ]
 
-    def __ne__(self, word: Word) -> list[bool]:
+    def __ne__(self, word: Word) -> list[bool]:  # type: ignore[override]
         """Return an list with opposite comparison for each letter."""
         return [
             letter_a != letter_b for letter_a, letter_b in zip(self.word, word.word)
