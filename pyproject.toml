@@ -17,5 +17,19 @@ dynamic = ["version", "description"]
 [project.urls]
 Home = "https://github.com/Juanki0396/wordle_python"
 
+[project.optional-dependencies]
+dev = [
+	'pytest >= 7.1.0',
+	'tox >= 3.25.1',
+	'pre-commit >= 2.17.0',
+	'pip-tools>=6.8.0',
+	'flake8 >= 4.0.1',
+	'flake8-docstrings >= 1.6.0',
+	'isort >= 5.10.1',
+	'black >= 22.6',
+ 	'mypy >= 0.971',
+	'flit >= 0.6',
+]
+
 [tool.isort]
 profile = "black"
