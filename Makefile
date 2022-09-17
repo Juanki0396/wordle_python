@@ -20,7 +20,6 @@ PACKAGE_BUILD = $(PACKAGE_TOOL) build
 PACKAGE_INSTALL = $(PACKAGE_TOOL) install
 PACKAGE_DEPENDENCIES = dev-requirements.txt
 
-
 ## -----------------
 ## -----------------
 ## Recipes
@@ -36,6 +35,7 @@ venv: # Install the virtual environment
 	$(PYTHON_VERSION) -m venv $(VENV_NAME)
 	source $(VENV_ACTIVATE) && pip install --upgrade pip && pip install pip-tools
 	source $(VENV_ACTIVATE) && pip-sync $(PACKAGE_DEPENDENCIES)
+	source $(VENV_ACTIVATE) && pre-commit install
 
 clean_venv: # Clean the venv folder
 	@echo "Deleting the environment"
@@ -52,3 +52,17 @@ install: # Install the package
 build: # build the package
 	@echo "Building the package: $(PROJECT_NAME)"
 	$(PACKAGE_BUILD)
+
+tests:
+	@echo "Running tests"
+	pytest tests
+
+tox:
+	@echo "Running tox"
+	tox
+
+clean_cache: # Clean repo from cache files
+	@echo "Removing cache files"
+	rm -r .mypy_cache
+	rm -r .pytest_cache
+	rm -r .tox
